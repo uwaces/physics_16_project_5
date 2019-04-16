@@ -48,6 +48,30 @@ def infinite_sqare_well_potential(length, infinity=10e10, start=None, end=None):
 
 def harmonic_oscillator_potential(length, dx, a=1.0, center=None):
     """Make the Harmonic Oscillator Potential.
-    TODO
+    Arguments
+    ---------
+        length: int 
+            number of simulated positions
+        dx: float
+            the distance between each point defined on the potential
+            (not used, didn't know if we wanted an ulterior motive with this variable)
+        a: float
+            the max-value of the potential
+        center: float
+            The x-value of the center of the parabola and where it is the lowest potential value
+        
     """
+    """k is the spring constant, which is set to 1 for now"""
+    k = 1.0
+    potential = np.zeros(length)
+    for i in range(0, length):
+        x = i - center
+        energy = 1/2 * k * x**2
+        if x <= a and x >= -a:
+            potential[i] = energy
+        else:
+            potential[i] = a
+           
+        
+    return potential
     pass
